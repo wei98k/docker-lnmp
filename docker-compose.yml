@@ -6,17 +6,18 @@ services:
             - "80:80"
         volumes_from:
             - php5.6
+            - php7.2
         volumes:
             - ./app/nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./app/nginx/vhost:/etc/nginx/conf.d
     php5.6:
-        image: php:5.6-fpm-alpine
+        image: myphp 
         volumes:
             - ./wwwroot:/home/wwwroot
     php7.2:
-        image: php:7.2-rc-fpm-alpine
+        image: myphp7.2
         volumes:
-            - ./wwwroot:/home/wwwroot
+            - ./wwwroot:/home/www-data
     mysql5.6:
         image: mysql:5.6
         ports:
