@@ -5,17 +5,17 @@ services:
         ports:
             - "80:80"
         volumes_from:
-            - php7.2
+            - php5.6
         volumes:
             - ./app/nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./app/nginx/vhost:/etc/nginx/conf.d
-    php7.2:
+    php5.6:
         build:
-            context: ./app/php7.2
+            context: ./app/php5.6
             dockerfile: Dockerfile
         volumes:
             - ./wwwroot:/home/wwwroot
-            - ./app/php7.2/conf/php.ini-development:/usr/local/etc/php/php.ini
+            - ./app/php5.6/conf/php.ini-development:/usr/local/etc/php/php.ini
     mysql5.6:
         image: mysql:5.6
         ports:
