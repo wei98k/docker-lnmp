@@ -35,13 +35,27 @@ RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev lib
 #    && docker-php-ext-install redis \
 #    && rm -rf /usr/src/php
 #添加memcached
-ENV PHPMEMCACHED_VERSION 1.5.1 
-RUN apk add --no-cache --virtual .build-deps \
-        && $PHPIZE_DEPS \
-        && pecl install memcached-3.0.3\ 
-        && apk del .build-deps \
-        && pecl update-channels \
-        && rm -rf /tmp/pear ~/.pearrc
+
+ENV MEMCACHED_DEPS zlib-dev libmemcached-dev cyrus-sasl-dev
+RUN apk add --no-cache --update libmemcached-libs zlib
+RUN set -xe \
+    && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
+    && apk add --no-cache --update --virtual .memcached-deps $MEMCACHED_DEPS \
+    && pecl install memcached-2.2.0 \
+    && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/memcached.ini \
+    && pecl install redis \
+    && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
+    && rm -rf /usr/share/php \
+    && rm -rf /tmp/* \
+    && apk del .memcached-deps .phpize-deps
+
+#ENV PHPMEMCACHED_VERSION 1.5.1 
+#RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS libz-dev \
+#        && pecl install -o -f memcached-2.2.0 \ 
+#        && echo extension=memcached.so >> /usr/local/etc/php/conf.d/memcached.ini \
+#        && apk del .build-deps \
+#        && pecl update-channels \
+#        && rm -rf /tmp/pear ~/.pearrc
 
 #安装php composer
 #RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"  
