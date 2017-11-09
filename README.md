@@ -1,6 +1,17 @@
 # docker-lnmp
 
-## Docker使用
+
+## build environment
+
+### step1
+insatll docker 
+
+### step2
+execute ```docker-compose up -d ```
+
+build done 
+
+## Docker基本命令
 
 构建一个镜像
 ```
@@ -34,17 +45,6 @@ sudo docker login #登录
 sudo docker commit -m "推送说明" -a "推送人名字" <容器ID> <你创建的仓库地址> eg:ouruser/sinatra:v2
 sudo docker push <你创建的仓库地址>
 ```
-
-## build environment
-
-### step1
-insatll docker 
-
-### step2
-execute ```docker-compose up -d ```
-
-build done 
-
 
 ### 相关资料
 
