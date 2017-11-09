@@ -11,6 +11,10 @@ execute ```docker-compose up -d ```
 
 build done 
 
+## 已构建镜像
+
+Laravel-5.5: ``` docker pull hellomjw/php:laravel ```
+
 ## Docker基本命令
 
 构建一个镜像
