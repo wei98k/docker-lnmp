@@ -17,7 +17,7 @@ services:
     php:
         image: hellomjw/php:laravel
         volumes:
-            - ./wwwroot:/home/wwwroot
+            - ./wwwroot:/home/www-data
             - ./app/php7.2/conf/php.ini-development:/usr/local/etc/php/php.ini
     mysql5.6:
         image: mysql:5.6

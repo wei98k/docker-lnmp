@@ -36,4 +36,4 @@ RUN composer global require "laravel/installer" \
 
 
 #USER www-data
-WORKDIR /home/wwwroot
+WORKDIR /home/www-data
