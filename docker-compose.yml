@@ -6,6 +6,7 @@ services:
             - "80:80"
         links:
             - php
+            - php5.6
         volumes:
             - ./wwwroot:/home/www-data #如果不加这行就会出现 ->  issues/2
             - ./app/nginx/nginx.conf:/etc/nginx/nginx.conf
@@ -20,6 +21,11 @@ services:
         volumes:
             - ./wwwroot:/home/www-data
             - ./app/php7.2/conf/php.ini-development:/usr/local/etc/php/php.ini
+    php5.6:
+        image: hellomjw/php:5.6
+        volumes:
+            - ./wwwroot:/home/www-data
+            - ./app/php5.6/conf/php.ini:/usr/local/etc/php/php.ini
     mysql5.6:
         image: mysql:5.6
         ports:

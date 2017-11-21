@@ -14,6 +14,7 @@ build done
 ## 已构建镜像
 
 Laravel-5.5: ``` docker pull hellomjw/php:laravel ```
+php-5.6: ``` docker pull hellomjw/php:5.6 ```
 
 ## Docker基本命令
 
