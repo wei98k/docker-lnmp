@@ -1,4 +1,5 @@
 # https://github.com/Desarrollo-CeSPI/docker-php-5.3-alpine
+# http://asaderas.blog.51cto.com/9344932/1686232 mhash 扩展安装方法
 FROM cespi/php-5.3:fpm-latest
 #RUN apk add -U --no-cache autoconf gettext-dev && docker-php-ext-install gettext
 #RUN apk add -U --no-cache autoconf openssl-dev && docker-php-ext-install ftp
@@ -6,7 +7,9 @@ FROM cespi/php-5.3:fpm-latest
 #RUN apk add -U --no-cache autoconf libmcrypt-dev && docker-php-ext-install 
 #RUN apk add -U --no-cache autoconf libxml2-dev && docker-php-ext-install soap
 #RUN apk add -U --no-cache autoconf libxml2-dev && docker-php-ext-install xmlrpc
-RUN apk add -U --no-cache autoconf freetype  && docker-php-ext-install zip
+#RUN apk add -U --no-cache autoconf zlib-dev  && docker-php-ext-install zip
+RUN apk add -U --no-cache autoconf mhash-devel  && docker-php-ext-configure \
+    --with-mhash 
 
 #RUN apk add -U --no-cache autoconf mariadb-dev freetype libpng libjpeg-turbo freetype-dev libjpeg-turbo-dev && docker-php-ext-configure gd \
 #      --with-gd \
