@@ -28,7 +28,7 @@ services:
             - ./wwwroot:/home/www-data
             - ./app/php5.6/conf/php.ini:/usr/local/etc/php/php.ini
     php5.3:
-        image: ksphp:5.3.28
+        image: hellomjw/php:ks-5.3.28
         volumes:
             - ./wwwroot:/home/www-data
     mysql5.6:
