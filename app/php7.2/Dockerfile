@@ -4,7 +4,8 @@ MAINTAINER HelloMJW majinawei168@outlook.com
 #替换国内镜像
 COPY ./source.list /etc/apk/repositories
 
-RUN apk update && apk upgrade
+#RUN apk update && apk upgrade
+RUN apk update
 
 #时区配置
 ENV TIMEZONE Asia/Shanghai
@@ -13,7 +14,7 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 RUN docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli
-RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
+RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev gmp-dev && \
     docker-php-ext-configure gd \
       --with-gd \
       --with-freetype-dir=/usr/include/ \
@@ -21,7 +22,7 @@ RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev lib
       --with-jpeg-dir=/usr/include/ \
       --with-zlib-dir=/usr && \
         NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
-        docker-php-ext-install -j${NPROC} gd zip && \
+        docker-php-ext-install -j${NPROC} gd zip gmp && \
         apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
 #安装php composer 如果无法安装可以下面的hash无法对应 到网站获取最新的hash值 https://getcomposer.org/download/
