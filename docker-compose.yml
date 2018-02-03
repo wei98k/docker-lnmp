@@ -22,8 +22,8 @@ services:
         volumes:
             - ./wwwroot:/home/www-data
             - ./app/php7.2/conf/php.ini-development:/usr/local/etc/php/php.ini
-    php5.6:
-        image: hellomjw/php:5.6
+    phpsvn:
+        image: hellomjw/php:svn
         volumes:
             - ./wwwroot:/home/www-data
             - ./app/php5.6/conf/php.ini:/usr/local/etc/php/php.ini
