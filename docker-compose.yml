@@ -6,7 +6,7 @@ services:
             - "80:80"
         links:
             - php
-            - php5.6
+            - phpsvn
             - node
         volumes:
             - ./wwwroot:/home/www-data #如果不加这行就会出现 ->  issues/2
