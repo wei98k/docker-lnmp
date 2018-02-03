@@ -25,7 +25,7 @@ services:
     phpsvn:
         image: hellomjw/php:svn
         volumes:
-            - ./svn:/home/svn
+            - ./wwwroot/svn:/home/svn
             - ./wwwroot:/home/www-data
             - ./app/php5.6/conf/php.ini:/usr/local/etc/php/php.ini
     node:
