@@ -37,3 +37,20 @@ services:
             MYSQL_ROOT_PASSWORD: "root"
             MYSQL_USER: "test"
             MYSQL_PASSWORD: "test123"
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        environment:
+            - PMA_ARBITRARY=1
+        restart: always
+        ports:
+            - 8080:80
+        volumes:
+            - /sessions
+    svn:
+        image: garethflowers/svn-server
+        restart: always
+        ports:
+            - 3690:3690
+        volumes:
+            - ./wwwroot/svn:/var/opt/svn
