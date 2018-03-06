@@ -1,7 +1,0 @@
-[client]
-default-character-set = utf8mb4
-host=localhost
-user=root
-password='root'
-
-innodb_use_native_aio=0
