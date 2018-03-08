@@ -1,0 +1,2 @@
+FROM hellomjw/php:laravel
+RUN docker-php-ext-install pcntl posix
