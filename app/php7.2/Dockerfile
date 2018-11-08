@@ -33,6 +33,12 @@ RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.ph
 RUN composer global require "laravel/installer" \
 	&& ln -s /root/.composer/vendor/laravel/installer/laravel /usr/local/bin/laravel
 
+#ssh服务文件
+
+COPY ssh/ /tmp/
+
+RUM mv /tmp/ssh* /etc/ssh/ && chmod 400 /etc/ssh
+
 
 #USER www-data
 WORKDIR /home/www-data

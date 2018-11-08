@@ -17,10 +17,14 @@ services:
 #        context: ./app/php7.2
 #        dockerfile: Dockerfile
     php:
-        image: hellomjw/php:laravel
+        image: registry.cn-qingdao.aliyuncs.com/majianwei/docker-lnmp:php7.2-alpine
+        ports:
+            - "2223:22"
         volumes:
             - ./wwwroot:/home/www-data
             - ./app/php7.2/conf/php.ini-development:/usr/local/etc/php/php.ini
+            - ./app/ssh/user1:/root/.ssh
+            - ./app/ssh/www-data:/home/www-data/.ssh
     node:
         command: npm start
         image: node:9.2-alpine
