@@ -6,11 +6,6 @@
 - base 最小化的lnmp环境
 - master 集成其它的一些服务, 会根据测试开源应用而集成不同的服务来测试. 比较不稳定. 
 
------
-[base 简单的lnmp环境分支-学习参考用](docker-lnmp/blob/base)
-
------
-
 ## 基本使用 build environment
 
 ### step1

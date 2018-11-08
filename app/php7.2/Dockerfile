@@ -9,9 +9,7 @@ RUN apk update
 
 #时区配置
 ENV TIMEZONE Asia/Shanghai
-RUN apk add tzdata
-RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
-RUN echo $TIMEZONE > /etc/timezone
+RUN apk add tzdata git ansible openssh &&  ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /etc/timezone
 
 RUN docker-php-ext-install mbstring opcache pdo pdo_mysql mysqli
 RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev gmp-dev && \
@@ -26,9 +24,10 @@ RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev lib
         apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
 #安装php composer 如果无法安装可以下面的hash无法对应 到网站获取最新的hash值 https://getcomposer.org/download/
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-RUN php composer-setup.php --install-dir=/bin --filename=composer
+RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" && \
+        php composer-setup.php && \
+        php -r "unlink('composer-setup.php');" && \
+        mv composer.phar /usr/local/bin/composer
 
 #安装Laravel管理器
 RUN composer global require "laravel/installer" \
