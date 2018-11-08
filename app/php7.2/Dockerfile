@@ -37,7 +37,7 @@ RUN composer global require "laravel/installer" \
 
 COPY ssh/ /tmp/
 
-RUM mv /tmp/ssh* /etc/ssh/ && chmod 400 /etc/ssh
+RUN mv /tmp/ssh* /etc/ssh/ && chmod 400 /etc/ssh
 
 
 #USER www-data
