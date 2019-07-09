@@ -12,14 +12,15 @@
 # Note: Base Image name format {image-tag}-{php-version}
 #
 
-ARG LARADOCK_PHP_VERSION
+
 
 # FROM laradock/php-fpm:2.2-${LARADOCK_PHP_VERSION}
-FROM hellomjw/laradock-php-fpm:1.0-${LARADOCK_PHP_VERSION}
+FROM hellomjw/laradock-php-fpm:1.0-5.6
 
 LABEL maintainer="Mahmoud Zalt <mahmoud@zalt.me>"
-
-ARG LARADOCK_PHP_VERSION
+                                       
+ENV LARADOCK_PHP_VERSION 5.6
+# ARG LARADOCK_PHP_VERSION
 
 # Set Environment Variables
 ENV DEBIAN_FRONTEND noninteractive
