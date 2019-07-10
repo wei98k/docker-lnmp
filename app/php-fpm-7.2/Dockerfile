@@ -344,7 +344,7 @@ RUN if [ ${INSTALL_GMP} = true ]; then \
 # PHP Memcached:
 ###########################################################################
 
-ARG INSTALL_MEMCACHED=false
+ARG INSTALL_MEMCACHED=true
 
 RUN if [ ${INSTALL_MEMCACHED} = true ]; then \
     # Install the php memcached extension
