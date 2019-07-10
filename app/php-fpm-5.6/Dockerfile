@@ -323,7 +323,7 @@ RUN if [ ${INSTALL_AMQP} = true ]; then \
 # pcntl
 ###########################################################################
 
-ARG INSTALL_PCNTL=false
+ARG INSTALL_PCNTL=true
 RUN if [ ${INSTALL_PCNTL} = true ]; then \
     # Installs pcntl, helpful for running Horizon
     docker-php-ext-install pcntl \
