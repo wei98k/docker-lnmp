@@ -18,7 +18,7 @@
 FROM hellomjw/laradock-php-fpm:1.0-5.6
 
 LABEL maintainer="Mahmoud Zalt <mahmoud@zalt.me>"
-                                       
+
 ENV LARADOCK_PHP_VERSION 5.6
 # ARG LARADOCK_PHP_VERSION
 
@@ -333,7 +333,7 @@ RUN if [ ${INSTALL_PCNTL} = true ]; then \
 # bcmath:
 ###########################################################################
 
-ARG INSTALL_BCMATH=false
+ARG INSTALL_BCMATH=true
 
 RUN if [ ${INSTALL_BCMATH} = true ]; then \
     # Install the bcmath extension
@@ -359,7 +359,7 @@ RUN if [ ${INSTALL_GMP} = true ]; then \
 # PHP Memcached:
 ###########################################################################
 
-ARG INSTALL_MEMCACHED=false
+ARG INSTALL_MEMCACHED=true
 
 RUN if [ ${INSTALL_MEMCACHED} = true ]; then \
     # Install the php memcached extension
@@ -452,7 +452,7 @@ RUN if [ ${INSTALL_IONCUBE} = true ]; then \
 # Opcache:
 ###########################################################################
 
-ARG INSTALL_OPCACHE=false
+ARG INSTALL_OPCACHE=true
 
 RUN if [ ${INSTALL_OPCACHE} = true ]; then \
     docker-php-ext-install opcache \
@@ -465,7 +465,7 @@ COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 # Mysqli Modifications:
 ###########################################################################
 
-ARG INSTALL_MYSQLI=false
+ARG INSTALL_MYSQLI=true
 
 RUN if [ ${INSTALL_MYSQLI} = true ]; then \
     docker-php-ext-install mysqli \
@@ -476,7 +476,7 @@ RUN if [ ${INSTALL_MYSQLI} = true ]; then \
 # Human Language and Character Encoding Support:
 ###########################################################################
 
-ARG INSTALL_INTL=false
+ARG INSTALL_INTL=true
 
 RUN if [ ${INSTALL_INTL} = true ]; then \
     # Install intl and requirements
@@ -558,7 +558,7 @@ RUN set -eux; \
 
 USER root
 
-ARG INSTALL_IMAGE_OPTIMIZERS=false
+ARG INSTALL_IMAGE_OPTIMIZERS=true
 
 RUN if [ ${INSTALL_IMAGE_OPTIMIZERS} = true ]; then \
     apt-get install -y jpegoptim optipng pngquant gifsicle \
@@ -570,7 +570,7 @@ RUN if [ ${INSTALL_IMAGE_OPTIMIZERS} = true ]; then \
 
 USER root
 
-ARG INSTALL_IMAGEMAGICK=false
+ARG INSTALL_IMAGEMAGICK=true
 
 RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
     apt-get install -y libmagickwand-dev imagemagick && \
