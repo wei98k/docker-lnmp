@@ -203,7 +203,7 @@ RUN if [ ${INSTALL_XDEBUG} = false -a ${INSTALL_BLACKFIRE} = true ]; then \
 #     &&  docker-php-ext-enable redis \
 # ;fi
 
-ARG INSTALL_PHPREDIS=false
+ARG INSTALL_PHPREDIS=true
 ENV PHPREDIS_VERSION 3.1.3
 RUN if [ ${INSTALL_PHPREDIS} = true ]; then \
    curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz \
@@ -219,7 +219,7 @@ RUN if [ ${INSTALL_PHPREDIS} = true ]; then \
 # Swoole EXTENSION
 ###########################################################################
 
-ARG INSTALL_SWOOLE=false
+ARG INSTALL_SWOOLE=true
 
 RUN if [ ${INSTALL_SWOOLE} = true ]; then \
     # Install Php Swoole Extension
