@@ -271,7 +271,7 @@ RUN if [ ${INSTALL_MONGO} = true ]; then \
 # Xhprof:
 ###########################################################################
 
-ARG INSTALL_XHPROF=true
+ARG INSTALL_XHPROF=false
 
 RUN if [ ${INSTALL_XHPROF} = true ]; then \
     # Install the php xhprof extension 
@@ -293,7 +293,7 @@ RUN if [ ${INSTALL_XHPROF} = true ]; then \
     && rm /tmp/xhprof.tar.gz \
 ;fi
 
-COPY ./xhprof.ini /usr/local/etc/php/conf.d
+#COPY ./xhprof.ini /usr/local/etc/php/conf.d
 
 ###########################################################################
 # AMQP:
