@@ -143,7 +143,7 @@ RUN if [ ${INSTALL_PG_CLIENT} = true ]; then \
 # xDebug:
 ###########################################################################
 
-ARG INSTALL_XDEBUG=true
+ARG INSTALL_XDEBUG=false
 
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
   # Install the xdebug extension
@@ -160,8 +160,7 @@ COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN sed -i "s/xdebug.remote_autostart=0/xdebug.remote_autostart=1/" /usr/local/etc/php/conf.d/xdebug.ini && \
     sed -i "s/xdebug.remote_enable=0/xdebug.remote_enable=1/" /usr/local/etc/php/conf.d/xdebug.ini && \
-    sed -i "s/xdebug.cli_color=0/xdebug.cli_color=1/" /usr/local/etc/php/conf.d/xdebug.ini && \
-    sed -i "s/extension=tideways.so/;extension=tideways.so/" /usr/local/etc/php/conf.d/xhprof.ini
+    sed -i "s/xdebug.cli_color=0/xdebug.cli_color=1/" /usr/local/etc/php/conf.d/xdebug.ini 
 
 ###########################################################################
 # Phpdbg:
@@ -257,7 +256,7 @@ RUN if [ ${INSTALL_MONGO} = true ]; then \
 # Xhprof:
 ###########################################################################
 
-ARG INSTALL_XHPROF=false
+ARG INSTALL_XHPROF=true
 
 RUN if [ ${INSTALL_XHPROF} = true ]; then \
     # Install the php xhprof extension 
